@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Durham Neighborhood Compass</title>
+        <meta name="description" content="Quality of Life Dashboard">
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/png" href="images/compass_notext.png" />
+        <link rel="apple-touch-icon-precomposed" href="images/compass_notext.png"/>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="styles/leaflet.css" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" /><![endif]-->
+        <link rel="stylesheet" href="styles/main.css">
+
+        <!-- Modernizr -->
+        <script src="scripts/vendor/modernizr-2.6.1.min.js"></script>
+        <script type="text/javascript">
+			var rv = -1;
+			if (navigator.appName == 'Microsoft Internet Explorer')
+			{
+			    var ua = navigator.userAgent; 
+			    var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+			    if (re.exec(ua) != null)
+			        rv = parseFloat( RegExp.$1 );
+			}
+			else if (navigator.appName == 'Netscape')
+			{
+			    var ua = navigator.userAgent;
+			    var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+			    if (re.exec(ua) != null)
+			        rv = parseFloat( RegExp.$1 );
+			}
+			if (rv>-1&&rv<11){alert("Internet Explorer does not yet support all of the functionality in the Neighborhood Compass. To use the Compass at its best, please consider opening it with another web-browsing application such as Chrome, Firefox, Opera, or Safari.");}
+		    else if(rv>=11){var alertOK = alert("Internet Explorer does not yet support all of the functionality in the Neighborhood Compass. To use the Compass at its best, please consider opening it with another web-browsing application such as Chrome, Firefox, Opera, or Safari.");}
+		</script>
+        <script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-46577629-1', 'durhamnc.gov');
+		  ga('send', 'pageview');
+		  
+		
+		</script>
+
+    </head>
+    <body>
+
+    	<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" style="margin-top: 15px">
+                        <span><h4>Menu</h4></span>
+                    </a>
+                    <a class="brand" href="./index.html">
+						<img src="images/compass_final_logo_white_text10Pct.png" style="vertical-align: middle">
+                    </a>
+                    
+                    <div class="nav-collapse collapse" id="navbar" style="margin-top: 25px">
+                    	<ul class="nav" style="padding-left: 30px">
+                        	<li><a href="javascript:void(0)" data-toggle="modal" data-target="#modalReport" style="color: white"><strong>Report</strong></a></li>
+                            <li><a href="javascript:void(0)" data-toggle="modal" data-target="#modalData" style="color: white"><strong>Data</strong></a></li>
+                            <li class="dropdown">
+							  <a id="dropdownMenu1" href="" data-toggle="dropdown" style="color: white"><strong>Links</strong></a>
+							  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+							    <li role="presentation"><a role="menuitem" href='https://www.census.gov/acs/www/Downloads/handbooks/ACSGeneralHandbook.pdf' target="_blank">A Guide to Using ACS Data</a></li>
+							    <li role="presentation"><a role="menuitem" href='http://www.census.gov/glossary/' target="_blank">Census Bureau Glossary</a></li>
+							    <li role="presentation"><a role="menuitem"  href="http://durhamnc.maps.arcgis.com/home/webmap/viewer.html?webmap=46923bc1822c459da3fd26c882a3fd64" target="_blank">Durham Neighborhoods and Census Areas</a></li>
+							    <li role="presentation"><a role="menuitem" href="http://durhamnc.gov/documentcenter/view/1395" target="_blank">Zoning Classifications</a></li>
+							    <li role="presentation"><a role="menuitem" href="http://durhamnc.gov/documentcenter/view/1171" target="blank">Durham City/County Future Land Use</a></li>
+							    <li role="presentation"><a role="menuitem"  href="http://gisweb.durhamnc.gov/durhammaps/developmenttracker/index.html" target="_blank">City of Durham Development Tracker</a></li>
+							    <li role="presentation"><a role="menuitem"  href="http://gisweb.durhamnc.gov/sp/index.cfm" target="_blank">Other City of Durham Map Applications</a></li>
+							    <!-- <li role="presentation"><a role="menuitem"  href="http://durhamhoods.com" target="_blank">Durham Hoods</a></li> -->
+							  </ul>
+							</li>
+                            <li><a href="https://www.surveymonkey.com/s/BHT5VP5" target="_blank" style="color: white"><strong>Feedback</strong></a></li>
+                            <li><a href="data/CompassTutorial.pdf" target="_blank" style="color: white" onclick="fireGAEvent('Help', 'Click', 'Help');"><strong>Help</strong></a></li>
+                        </ul>
+                        <form class="navbar-form pull-right" onkeypress="isEnter(this, event)">
+                            <label for="searchbox" class="hide">Type an address: 505 W Chapel Hill</label>
+                            <input id="searchbox" class="input-large span4 transition" style="width: 250px" type="textbox" placeholder="Type an address: 505 W Chapel Hill" rel="popover" data-content="Search for an address (try <em>700 N</em>) or location (try <em>freedom</em>)." data-original-title="Search" data-placement="bottom" data-html="true" data-trigger="manual">
+                            <input id="btnSearch" type="button" class="geocodeButton" value="Search">
+                        </form>
+                        <a class="brand" href="https://twitter.com/durhamcompass">
+							<img src="images/Twitter_logo_white4pct.png" target="_blank" style="vertical-align: top">
+	                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        
+          <div class="container" style="margin-top: 50px">
+        	  <div id="layer-radios"></div>
+                <div class="span12">
+                  <div class="span7 pull-left">
+	                  <div class="span3">
+	                    <table>
+	                      <td  height="40" style="vertical-align: middle">Blockgroups: </td>
+	                      <td  height="40" style="vertical-align: middle">
+	                      <input type="radio" checked="true" class="censusRadio input-large" name="selectedItem" value="1"/>
+	                      </td>
+	                      <td  height="40" style="vertical-align: middle">Neighborhoods: </td>
+	                      <td  height="40" style="vertical-align: middle">
+	                      <input type="radio" id="neighborhoodsRadio" class="neighborhoodsRadio input-large" name="selectedItem" value="2" />
+	                      </td>
+	                    </table>
+	                  </div>
+	                  <div class="span3 pull-right" id="neighborhoodSelection">
+	                    <table>
+	                      <td  height="40" style="vertical-align: middle" style="visibility: visible">Select a Neighborhood: </td>
+	                      <td height="40" style="vertical-align: middle"><select name="nhdropdown" class="nhDropdown" id="neighborhoodDropdown" style="visibility: visible; width: 200px; margin-right: 25px"></select></td>
+	                    </table>
+	                  </div>
+	                  <div class="span3 pull-right" id="censusBlockSelection">
+	                    <table>
+	                      <td  height="40" style="vertical-align: middle" style="visibility: visible">Select a Blockgroup: </td>
+	                      <td height="40" style="vertical-align: middle"><select name="cbdropdown"  class="cbDropdown" id="censusblockDropdown" style="visibility: visible; width: 200px; margin-right: 25px"></select></td>
+	                    </table>
+	                  </div>
+	          	  </div>
+              </div>
+          		<div class="row main-row">
+	                <div class="span3 pull-right">
+	                  <div id="censusMeasureInfo">
+                                  <h2 id="censusYear"></h2>
+                                  <h3 id="selectedCensusBlock" class="measure-info"></h3>
+                                  <p id="details_measure" class="textleft">
+                                       <span id="selectedCBMeasure" class="measureText"></span>
+                                       <span id="selectedCBValue" class="measure-info measureText text-info"></span>
+                                       <br>
+                                       <span id="cbindicator_description" class=""></span>
+                                  </p>
+                              </div>
+                              <div id="neighborhoodMeasureInfo">
+                                  <h2 id="neighborhoodYear"></h2>
+                                  <h3 id="selectedNeighborhood" class="measure-info hide"></h3>
+                                  <p id="nhdetails_measure" class="textleft">
+                                       <span id="selectedNHMeasure" class="measureText"></span>
+                                       <span id="selectedNHValue" class="measure-info measureText text-info"></span>
+                                       <br>
+                                       <span id="nhindicator_description" class=""></span>
+                                  </p>
+                              </div>
+                              <div class="textcenter">
+                                  <div id="cbChart">
+                                    <div id='details_chart' class="chart"></div>
+                                  </div>
+                                  <div id="nhChart">
+                                    <div id='details_nhchart' class="chart"></div>
+                                  </div>
+                              </div>
+	                    <div id="censusBlocksTOC">
+	                      <div style="margin-bottom: 5px"><strong> Blockgroup Measures</strong></div>
+	                      <ul class="nav nav-list sidenav transition" rel="popover" data-content="Use the sidebar to choose dimensions and variables." data-original-title="Sidebar" data-placement="right" data-trigger="manual">
+	                          <li class="show-overview">
+	                              <a href="javascript:void(0)"> Overview</a>
+	                          </li>
+	                          <li class="gpsarea">
+	                              <a href="javascript:void(0)" class="gps">Find My Location</a>
+	                          </li>
+	                          <!--*****Add new Neighborhood category here Part I  NOTE: the data-group property must match the category attribute in metricsBGsDEV.json*****-->
+                              <li class="metrics-dropdown active">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Demographics</a>
+	                              <p data-group="demographics" class=""></p>
+	                          </li>
+	                          <li class="metrics-dropdown">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Infrastructure &amp Amenities</a>
+	                              <p data-group="amenities" class="hide"></p>
+	                          </li>
+	                          <li class="metrics-dropdown">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Education</a>
+	                              <p data-group="education" class="hide"></p>
+	                          </li>
+	                          <li class="metrics-dropdown">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Economy</a>
+	                              <p data-group="economy" class="hide"></p>
+	                          </li>
+	                          <li class="metrics-dropdown">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Housing</a>
+	                              <p data-group="housing" class="hide"></p>
+	                          </li>
+	                          <li class="metrics-dropdown">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Engagement</a>
+	                              <p data-group="engagement" class="hide"></p>
+	                          </li>
+	                          <li class="metrics-dropdown">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Environment</a>
+	                              <p data-group="environment" class="hide"></p>
+	                          </li>
+	                          <li class="metrics-dropdown">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Safety</a>
+	                              <p data-group="safety" class="hide"></p>
+	                          </li>
+	                      </ul>
+	                    </div>
+	                    <div id="neighborhoodsTOC">
+	                      <div style="margin-bottom: 5px"><strong> Neighborhood Measure</strong></div>
+	                      <ul class="nav nav-list nhSidenav transition" rel="popover" data-content="Use the sidebar to choose dimensions and variables." data-original-title="Sidebar" data-placement="right" data-trigger="manual">
+	                        <li class="show-overview">
+	                            <a href="javascript:void(0)"> Overview</a>
+	                        </li>
+	                        <li class="gpsarea">
+	                            <a href="javascript:void(0)" class="gps">Find My Location</a>
+	                        </li>
+	                        <!--//*****Add new Neighborhood category here Part I NOTE: the data-group property must match the category attribute in metricsNHsDEV.json*****-->
+                            <li class="nhmetrics-dropdown">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Infrastructure &amp Amenities</a>
+	                              <p nhdata-group="amenities" class="hide"></p>
+	                        </li>
+	                        <li class="nhmetrics-dropdown">
+	                              <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Education</a>
+	                              <p nhdata-group="education" class="hide"></p>
+	                        </li>
+	                        <li class="nhmetrics-dropdown active">
+	                            <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Economy</a>
+	                            <p nhdata-group="economy" class=""></p>
+	                        </li>
+	                        <li class="nhmetrics-dropdown">
+	                            <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Housing</a>
+	                            <p nhdata-group="housing" class="hide"></p>
+	                        </li>
+	                        <!-- <li class="metrics-dropdown">
+	                            <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Engagement</a>
+	                            <p data-group="engagement" class="hide"></p>
+	                        </li> -->
+	                        <li class="nhmetrics-dropdown">
+	                            <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Engagement</a>
+	                            <p nhdata-group="engagement" class="hide"></p>
+	                        </li>
+	                        <li class="nhmetrics-dropdown">
+	                            <a href="javascript:void(0)"><em class="icon-chevron-down"></em> Safety</a>
+	                            <p nhdata-group="safety" class="hide"></p>
+	                        </li>
+	                      </ul>
+	                    </div>
+	                </div>
+	                <div id="map-area" class="span9 pull-left">
+	                    <div id="map" class="transition" rel="popover" data-content="Hover over neighborhoods to get more information or  click a neighborhood to select it." data-original-title="Map" data-placement="left" data-trigger="manual"></div>
+	                    <div id="opacity_slider"></div>
+                    </div>
+	                    <div class="span9 pull-left">
+	                        <div id="metadata">
+	                          <div class="span5 measure-details pull-left">
+	                              <div class="measure-info-header">
+	                                  <h4>Why is this important?</h4>
+	                              </div>
+	                              <p id="indicator_why" ></p>
+	                                   <div class="measure-info-header">
+	                                  <h4>About the Data</h4>
+	                              </div>
+	                              <div id="indicator_technical"></div>
+	                          </div>
+	                          <div class="span3 measure-details pull-left">
+	                              <div class="measure-info-header">
+	                                  <h4>Additional Resources</h4>
+	                              </div>
+	                              <p id="indicator_resources"></p>
+	                          </div>
+	                        </div>
+	                    </div>
+	               </div>
+	
+	            </div>
+	            <hr>
+
+            <footer class="textcenter" class="span9 pull-left">
+            	<p>
+            		<img src="images/CompassFlagFooter.png" class="span4 pull-left" height="20%" width="20%"style="padding-left: 18%">
+                    <a href="javascript:void(0)" class="pull-left" style="padding-left: 5%; padding-top: 20px" data-toggle="modal" data-target="#modalAbout">About</a>
+                	<!-- <img src="images/DurhamLogo.jpg" style="padding-right: 30px" height="4%" width="4%" alt="City Logo"> -->
+                    <a href="javascript:void(0)" class="pull-left" style="padding-left: 5%; padding-top: 20px"data-toggle="modal" data-target="#modalDisclaimer">Disclaimer</a>
+                	<!-- <img src="images/CountyLogo.jpg" style="padding-left: 30px" height="5%" width="5%" alt="City Logo"> -->
+                	<a href="javascript:void(0)" class="pull-left" style="padding-left: 5%; padding-top: 20px" data-toggle="modal" data-target="#modalContact">Contact</a>
+                </p>
+                
+            </footer>
+				</div>
+            <div class="modal hide fade" id="modalHelp">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Help</h3>
+            </div>
+            <div class="modal-body">
+                <div class="textcenter">
+                    <iframe width="480" height="360" src="http://www.youtube.com/embed/q44rj2M8NKc" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p>
+                    <h4>Additional Resources</h4>
+                    <ul>
+                        <li><a href="https://support.google.com/fusiontables/" target="_blank">Google Fusion Tables Help</a></li>
+                        <li><a href="javascript:void(0)" class="talkback">Report a Problem</a></li>
+                    </ul>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            </div>
+        </div>
+		<div class="modal hide fade" id="modalAbout">
+            <div class="modal-body">
+                <p>The <strong>Durham Neighborhood Compass</strong> is a quantitative indicators project with qualitative values,  integrating data from local government, the Census Bureau and other state and federal agencies. Measurements are identified through local strategic planning, resident input, research and best practices for neighborhood indicators. The project objective is to provide data that allows all local stakeholders to track quality of life and provision of services throughout Durham.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            </div>
+        </div>
+        <div class="modal hide fade" id="modalDisclaimer">
+            <div class="modal-body">
+                <p>This system is subject to current public information rules and regulations. Information presented on this web site is considered public information and may be redistributed or copied. The City of Durham and its data providers give no warranty, expressed or implied, regarding the data presented. The publisher and data providers assume no liability for damage arising from the use of this web site or the data provided herein.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            </div>
+        </div>
+        <div class="modal hide fade" id="modalContact">
+            <div class="modal-body">
+                <div class="infoContact">
+                	<h3>Contact Us</h3>
+                	<h5><p>We want to hear from you! How are you using the Neighborhood Compass? Would you like to learn more about it or simply share your thoughts?</p>
+                		<div style="margin-left: 2em;"><p>Contact John Killeen at:
+                		(919)560-1647 x: 34274 or John.Killeen@durhamnc.gov</p></div>
+                		<br>
+                		<p>Are you a web developer? Do you want to report a bug or learn more about the application's functionality?</p>
+                		<div style="margin-left: 2em;"><p>Contact Tyler Waring at:
+                		(919)560-4122 x: 33218 or Tyler.Waring@durhamnc.gov</p></div>
+                	</h5>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            </div>
+        </div>
+        <div class="modal hide fade" data-backdrop="static" keyboard="false" id="modalLogin">
+            <div class="modal-body" style="height: 100%; width: 100%" >
+     			<div style="width:90%; -webkit-overflow-scrolling: touch; border: 1px solid #b7b7b5; max-height:238px; overflow:auto; padding:5px; padding-right: 25">
+					<p>
+	                Please note that data presented in the Neighborhood Compass are developed from local public records and sources such as the U.S. Decennial Census and American Community Survey. While effort has been made to use the most current and accurate data the City of Durham, Durham County, and other project contributors assume no legal responsibility for the information contained in the Neighborhood Compass. 
+	 				</p>
+	                <p>
+					To enter the Neighborhood Compass, please select the category below that most closely reflects your use of the site. By clicking the “Login” button you indicate your UNDERSTANDING and ACCEPTANCE of the limitations stated above.
+					</p>
+				</div>
+
+                <table>
+                    <tr>
+                        <td id="publicLoginLabel" height="40" style="color: red">Public: </td>  
+                        <td  height="40"><input type="radio" onclick="checkUserType()" id="publicRadio" class="publicRadio input-large" name="selectedJurisdiction" value="Public"/></td>
+                        <td id="cityLoginLabel" height="40" style="padding-left: 15px; color: red">City: </td>  
+                        <td  height="40"><input type="radio" onclick="checkUserType()" id="cityRadio" class="cityRadio input-large" name="selectedJurisdiction" value="City"/></td>
+                        <td id="countyLoginLabel" height="40" style="padding-left: 15px; color: red">County: </td>
+                        <td  height="40"><input type="radio" onclick="checkUserType()" id="countyRadio" class="countyRadio input-large" name="selectedJurisdiction" value="County" /></td>
+                    </tr>
+                </table>
+                <div style="height: 30px">
+	                <div id="userFocusContent">
+		                <table>
+		        	        <td id="userFocus" style="vertical-align: middle; color: red">Focus: </td>
+		                    <td  style="vertical-align: middle"><select id="focusSelect" style="border-color: red" name="userFocus"  class="input" onchange="checkUserFocus()"></select></td>
+		                </table>
+		            </div>
+	            </div>               
+            </div>
+        </div>
+		<!-- <div class="modal hide fade" data-backdrop="static" id="modalLogin"> -->
+            <!-- <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Disclaimer</h3>
+            </div> -->
+            <!-- <div class="modal-body">
+                <p>Please note that maps and tabular data presented in the Neighborhood Compass are developed from public records and data sources including the U.S. Decennial Census and American Community Survey, building permits, and other locally-generated public records. Users are hereby notified that this is a beta, or testing, version of this application. While efforts have been made to use the most current and accurate data the City of Durham, Durham County, and other project contributors assume no legal responsibility for the information contained in the Neighborhood Compass. 
+ 				</p>
+                <p>
+				To enter the beta Neighborhood Compass, indicate that you are either a City or County employee and enter the appropriate login information. By clicking the “Login” button you indicate your UNDERSTANDING and ACCEPTANCE of the limitations stated above and your City or County employee status. 
+				</p>
+                <table>
+                    <tr>
+                        <td  height="40" style="vertical-align: middle">Login: </td>
+                        <td  height="40" style="vertical-align: middle"><input id="compassLogin" type="text" class="compassLogin input-append"/></td>
+                    </tr>
+                    <tr>
+                        <td  height="40" style="vertical-align: middle">Password: </td>
+                        <td  height="40" style="vertical-align: middle"><input id="compassPassword" type="text" class="compassPassword input-append"/></td>
+                    </tr>
+                </table>
+              </form>                
+            </div>
+            <div class="modal-footer">
+                <div class="control-group">
+                    <div class="controls">
+                        <input class="btn btn-primary" type="submit" onclick="checkLogin()" id="submitLogin" name="loginSubmit" value="Login" />
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="modal hide fade" id="modalData">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Data</h3>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <h4>Download the Data</h4>
+                    <ul>
+                    	<li><a href="data/CompassCSV.zip" onclick="fireGAEvent('Data', 'Download', 'CSV');">CSV/Excel</a></li>
+                        <li><a href="data/CompassSHP.zip" onclick="fireGAEvent('Data', 'Download', 'Shapefile');">GIS Shapefile</a></li>
+                        <li><a href="data/CompassKML.zip" onclick="fireGAEvent('Data', 'Download', 'KML');">KML</a></li>
+                        <li><a href="data/CompassJSON.zip" onclick="fireGAEvent('Data', 'Download', 'JSON');">JSON</a></li>
+                    </ul>
+                    <h6 id="dataLastUpdated"></h6>
+                    <hr style="width: 100%">
+                    <a href="data/Requirements For Data Provision.pdf">Contribute Data</a>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            </div>
+        </div>
+
+        <div class="modal hide fade" id="modalTalkback">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Report a Problem</h3>
+            </div>
+            <div class="modal-body">
+                <p>Thank you for taking the time to let us know about a problem or giving us feedback. Please fill out the form below and let us know about the issue in as much detail as possible.</p>
+                <form id="talkback" class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">Email</label>
+                            <div class="controls">
+                                <input type="text" id="inputEmail" class="input-xlarge" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="inputName">Name</label>
+                            <div class="controls">
+                                <input type="text" id="inputName" class="input-xlarge" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="inputFeedback">Feedback</label>
+                            <div class="controls">
+                                <textarea rows="7" id="inputFeedback" class="input-xlarge"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            </div>
+        </div>
+
+                <div class="modal hide fade"  id="modalReport">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Report</h3>
+                
+            </div>
+            <div class="modal-body">
+                <form action="php/report.php" method="get" target="_blank">
+                <table>
+                    <td  height="40" style="vertical-align: middle; padding-right: 20px; padding-left: 20px"><input type="radio" id="censusRadioReport" class="input-large" checked="checked" name="reportRadio" value="census" onclick="clickReport(this.value)"/>Blockgroups</td>
+                    <td  height="40" style="vertical-align: middle"><input type="radio" id="neighborhoodRadioReport" class="input-large" name="reportRadio" value="neighborhood" onclick="clickReport(this.value)"/>Neighborhoods</td>
+					<!--//***** timeseries component -->
+                	<td  height="40" width="250" align="middle" style="vertical-align: middle" >Year:  <select id="report_year" name="reportYear" style="width: 85px"><option value="2013">2013</option><option value="2014">2014</option></select></td>
+                </table>
+                    <div class="form-horizontal" style="padding-top: 10px">
+                        <table>
+                            <td style="vertical-align: middle">
+                                <div id = 'dropdownCensus' class="control-group">
+                                    <label class="control-label" id="cbSelectLabel" for="report_census"><strong>Select up to 10 Blockgroups</strong></label>
+                                    <div class="controls">
+                                        <select id="report_census" name="cb[]" multiple="true" class="input-large" onchange="reportFormCheck('census')">
+                                        	<Option>1 - 370630001011</Option><Option>2 - 370630001012</Option><Option>3 - 370630001021</Option><Option>4 - 370630001022</Option><Option>5 - 370630002001</Option><Option>6 - 370630002002</Option><Option>7 - 370630002003</Option><Option>8 - 370630003011</Option><Option>9 - 370630003012</Option><Option>10 - 370630003013</Option><Option>11 - 370630003021</Option><Option>12 - 370630003022</Option><Option>13 - 370630003023</Option><Option>14 - 370630004011</Option><Option>15 - 370630004012</Option><Option>16 - 370630004013</Option><Option>17 - 370630004021</Option><Option>18 - 370630005001</Option><Option>19 - 370630005002</Option><Option>20 - 370630005003</Option><Option>21 - 370630005004</Option><Option>22 - 370630006001</Option><Option>23 - 370630006002</Option><Option>24 - 370630006003</Option><Option>25 - 370630007001</Option><Option>26 - 370630007002</Option><Option>27 - 370630007003</Option><Option>28 - 370630009001</Option><Option>29 - 370630009002</Option><Option>30 - 370630010011</Option><Option>31 - 370630010012</Option><Option>32 - 370630010013</Option><Option>33 - 370630010021</Option><Option>34 - 370630010022</Option><Option>35 - 370630010023</Option><Option>36 - 370630010024</Option><Option>37 - 370630011001</Option><Option>38 - 370630011002</Option><Option>39 - 370630013011</Option><Option>40 - 370630013031</Option><Option>41 - 370630013032</Option><Option>42 - 370630013041</Option><Option>43 - 370630014001</Option><Option>44 - 370630014002</Option><Option>45 - 370630015011</Option><Option>46 - 370630015021</Option><Option>47 - 370630015022</Option><Option>48 - 370630015023</Option><Option>49 - 370630015024</Option><Option>50 - 370630015031</Option><Option>51 - 370630016011</Option><Option>52 - 370630016012</Option><Option>53 - 370630016013</Option><Option>54 - 370630016031</Option><Option>55 - 370630016032</Option><Option>56 - 370630016033</Option><Option>57 - 370630016034</Option><Option>58 - 370630016041</Option><Option>59 - 370630016042</Option><Option>60 - 370630016043</Option><Option>61 - 370630017051</Option><Option>62 - 370630017052</Option><Option>63 - 370630017053</Option><Option>64 - 370630017061</Option><Option>65 - 370630017062</Option><Option>66 - 370630017071</Option><Option>67 - 370630017072</Option><Option>68 - 370630017073</Option><Option>69 - 370630017074</Option><Option>70 - 370630017075</Option><Option>71 - 370630017081</Option><Option>72 - 370630017091</Option><Option>73 - 370630017092</Option><Option>74 - 370630017093</Option><Option>75 - 370630017101</Option><Option>76 - 370630017102</Option><Option>77 - 370630017111</Option><Option>78 - 370630017112</Option><Option>79 - 370630017113</Option><Option>80 - 370630018011</Option><Option>81 - 370630018012</Option><Option>82 - 370630018013</Option><Option>83 - 370630018014</Option><Option>84 - 370630018015</Option><Option>85 - 370630018021</Option><Option>86 - 370630018022</Option><Option>87 - 370630018023</Option><Option>88 - 370630018024</Option><Option>89 - 370630018061</Option><Option>90 - 370630018062</Option><Option>91 - 370630018071</Option><Option>92 - 370630018072</Option><Option>93 - 370630018073</Option><Option>94 - 370630018081</Option><Option>95 - 370630018082</Option><Option>96 - 370630018091</Option><Option>97 - 370630018092</Option><Option>98 - 370630019001</Option><Option>99 - 370630019002</Option><Option>100 - 370630020071</Option><Option>101 - 370630020072</Option><Option>102 - 370630020073</Option><Option>103 - 370630020081</Option><Option>104 - 370630020082</Option><Option>105 - 370630020091</Option><Option>106 - 370630020092</Option><Option>107 - 370630020093</Option><Option>108 - 370630020131</Option><Option>109 - 370630020132</Option><Option>110 - 370630020133</Option><Option>111 - 370630020151</Option><Option>112 - 370630020152</Option><Option>113 - 370630020153</Option><Option>114 - 370630020161</Option><Option>115 - 370630020162</Option><Option>116 - 370630020171</Option><Option>117 - 370630020172</Option><Option>118 - 370630020173</Option><Option>119 - 370630020181</Option><Option>120 - 370630020182</Option><Option>121 - 370630020183</Option><Option>122 - 370630020191</Option><Option>123 - 370630020192</Option><Option>124 - 370630020193</Option><Option>125 - 370630020201</Option><Option>126 - 370630020202</Option><Option>127 - 370630020211</Option><Option>128 - 370630020212</Option><Option>129 - 370630020221</Option><Option>130 - 370630020222</Option><Option>131 - 370630020231</Option><Option>132 - 370630020232</Option><Option>133 - 370630020241</Option><Option>134 - 370630020242</Option><Option>135 - 370630020243</Option><Option>136 - 370630020251</Option><Option>137 - 370630020252</Option><Option>138 - 370630020253</Option><Option>139 - 370630020261</Option><Option>140 - 370630020262</Option><Option>141 - 370630020271</Option><Option>142 - 370630020272</Option><Option>143 - 370630020273</Option><Option>144 - 370630020281</Option><Option>145 - 370630020282</Option><Option>146 - 370630020283</Option><Option>147 - 370630021001</Option><Option>148 - 370630021002</Option><Option>149 - 370630021003</Option><Option>150 - 370630022001</Option><Option>151 - 370630023001</Option><Option>152 - 370630023002</Option><Option>153 - 370639801001</Option>
+                                      	</select>
+                                    </div>
+                                	<table>
+                                		<td><label id="censusFeatureLabel" style="margin-left: 180px"></label></td>
+                                		<td><label id="censusFeatureCount"></label></td>
+		                        	</table>
+		                        </div>
+                            </td>
+                            <td style="vertical-align: middle">
+                                <div id = 'dropdownNeighborhood' class="control-group">
+                                    <label class="control-label" id="nhSelectLabel" for="report_neighborhood"><strong>Select up to 10 Neighborhoods</strong></label>
+                                    <div class="controls">
+                                        <select id="report_neighborhood" name="nh[]" multiple="true" class="input-large" onchange="reportFormCheck('neighborhood')">
+                                          <option>Abercromby</option><option>Abron Drive</option><option>Albright</option><option>Amberlynn Valley</option><option>American Village</option><option>Anderson St. / Wrightwood Park</option><option>Ashley Forest</option><option>Auburn Hills</option><option>Auburn Park</option><option>Auburn Square</option><option>Audubon Park</option><option>Barclay to Sandlewood</option><option>Belcrest</option><option>Bennet Place</option><option>Bent Creek / Woodberry Forest</option><option>Bluffs of the Eno</option><option>Bon Air Avenue</option><option>Bradbury Glen</option><option>Bradbury Trace</option><option>Brandon Ridge</option><option>Briarcliff</option><option>Buck Crossing</option><option>Burch Avenue</option><option>Cameron Woods</option><option>Cardinal Lake</option><option>Carillon Forest</option><option>Central Park</option><option>Chancellor's Ridge</option><option>Chapel Hill Road</option><option>Cleveland-Holloway</option><option>Colchester</option><option>Cole Mill Road</option><option>Colonial Village</option><option>Colony Park</option><option>Colony Woods</option><option>Colvard Farms</option><option>Copper Creek</option><option>Country Club Heights</option><option>Cranford Road</option><option>Crest Street</option><option>Croasdaile</option><option>Crooked Creek</option><option>Cross Timbers</option><option>Crown Point</option><option>Darby Glen</option><option>Dixon Road Area</option><option>Downing Creek</option><option>Downtown</option><option>Duke East Campus</option><option>Duke Forest</option><option>Duke Homestead</option><option>Duke Manor Apartments</option><option>Duke Park</option><option>Duke West Campus</option><option>Eagle's Pointe</option><option>Eastway Village</option><option>Eastwood Park</option><option>Edgemont</option><option>Emorywood Estates</option><option>Eno Commons</option><option>Eno Trace</option><option>Everwood</option><option>Fairfield</option><option>Falconbridge</option><option>Fieldstone by the Eno</option><option>Five Oaks</option><option>Five Oaks 4100</option><option>Folkstone</option><option>Forest Hills</option><option>Forest Oaks</option><option>Fortune's Ridge</option><option>Fox Run</option><option>Franklin Village</option><option>Garret Farms - Porchlight / Hartley</option><option>Gatewood Forest</option><option>Glennstone</option><option>Golden Belt</option><option>Grande Park</option><option>Green Mill</option><option>Grove Park</option><option>Heather Glen</option><option>Highgate</option><option>Homeplace II</option><option>Hope Valley</option><option>Hope Valley Downs</option><option>Hope Valley Farms</option><option>Hope Valley Forest</option><option>Hope Valley Green</option><option>Hope Valley North</option><option>Horton Hills</option><option>Huntington Ridge</option><option>Inverness Drive</option><option>Knollwood</option><option>Lake Park</option><option>Lakehurst</option><option>Lakewood Park</option><option>Landon Farms</option><option>Lochaven Hills</option><option>Lochn'ora</option><option>Lochside</option><option>Long Meadow</option><option>Lyon Park</option><option>Marbry Landing</option><option>Mary Dell</option><option>Meadows of Pagehurst</option><option>Merrick Moore</option><option>Milan Woods</option><option>Morehead Hill</option><option>Myers Park/Beechgrove</option><option>Newhall Village</option><option>North Carolina Central University</option><option>North Durham Community</option><option>Northeast Hills</option><option>Northgate Park</option><option>Oak Grove Community</option><option>Oakhaven</option><option>Oakhurst</option><option>Old East Durham</option><option>Old Farm</option><option>Old Five Points</option><option>Old North Durham</option><option>Old West Durham</option><option>Omah Street</option><option>Orchid Court</option><option>Pagehurst</option><option>Parc at University</option><option>Park Ridge</option><option>Parkside</option><option>Parkwood</option><option>Penrith</option><option>Placid Valley</option><option>Pleasant Drive</option><option>Preston Woods</option><option>Providence Ridge</option><option>Ravenstone</option><option>Rigsbee Hill</option><option>Rockwood</option><option>Scarsdale Village</option><option>Sheridan Drive</option><option>South Terrace at Auburn</option><option>Southampton</option><option>Southpoint Manor</option><option>Southside / St. Teresa</option><option>Spring Valley</option><option>Stadium Heights</option><option>Stephen's Woods</option><option>Sterling Ridge</option><option>Stillwood</option><option>Stirrup Creek</option><option>Stratford Lakes</option><option>Summer Meadow</option><option>Sunningdale</option><option>Surrey Green</option><option>Swallows Ridge</option><option>Swann's Mill</option><option>Taylor Estates</option><option>The Hills at Southpoint</option><option>The Landing at Southpoint</option><option>Treyburn</option><option>Trinity Commons</option><option>Trinity Heights</option><option>Trinity Park</option><option>Trotter Ridge</option><option>Tuscaloosa-Lakewood</option><option>Urban 900</option><option>Valley Run</option><option>Valleybrook</option><option>Vantage Pointe</option><option>Walden Pond</option><option>Walltown</option><option>Warehouse District</option><option>Waterford</option><option>Watts Hospital-Hillandale</option><option>Welcome Circle</option><option>Wellington Forest</option><option>Wellons Village</option><option>West End</option><option>West Hills</option><option>West Murray / Broad</option><option>Westgate Townes</option><option>Westwood Estates</option><option>Whitney Park</option><option>Willow Hill</option><option>Willowhaven</option><option>Windsor Oaks</option><option>Woodcroft</option><option>Woodlake</option><option>Woodwinds</option><option>Wynstead</option><option>Wynterfield</option>
+                                        </select>
+                                    </div>
+                                	<table>
+                                		<td><label id="neighborhoodFeatureLabel" style="margin-left: 180px"></label></td>
+                                		<td><label id="neighborhoodFeatureCount"></label></td>
+		                        	</table>
+		                        </div>
+                            </td>
+                            <td style="vertical-align: top">
+                            	<small id="useCtrlLabel" style="width: 100px" class='span3'> CTRL or SHFT + click for multiple selections.</small>
+                            </td>
+                        </table>
+                        <div class="control-group">
+                        	<label class="control-label" id="cbReportLabel" for="cbreport_metrics"><strong>Blockgroup Variables</strong></label>
+                            <label class="control-label" id="nhReportLabel" for="nhreport_metrics"><strong>Neighborhood Variables</strong></label>
+                            <div class="controls">
+                                <select id="cbreport_metrics" multiple="multiple" name="cbM[]" class="input-xlarge" style="height: 160px" onchange="reportFormCheck('census')">
+                                    <!--*****Add new Block Group category here Part II. NOTE: The data-group property must match the category attribute in metricsBGsDEV.json*****-->
+                                    <optgroup label="Demographics" data-group="demographics"></optgroup>
+                                    <optgroup label="Infrastructure &amp Amenities" data-group="amenities"></optgroup>
+                                    <optgroup label="Education" data-group="education"></optgroup>
+                                    <optgroup label="Economy" data-group="economy"></optgroup>
+                                    <optgroup label="Housing" data-group="housing"></optgroup>
+                                    <optgroup label="Engagement" data-group="engagement"></optgroup>
+                                    <optgroup label="Environment" data-group="environment"></optgroup>
+                                    <optgroup label="Safety" data-group="safety"></optgroup>
+                                </select>
+                            </div>
+                            <div class="controls">
+                                <select id="nhreport_metrics" multiple="multiple" name="nhM[]" class="input-xlarge" style="height: 160px" onchange="reportFormCheck('neighborhood')">
+                                    <!--//*****Add new Neighborhood category here Part II NOTE: The id property must match the category attribute in metricsNHsDEV.json*****-->
+                                    <optgroup label="Infrastructure &amp Amenities" nhdata-group="amenities"></optgroup>
+                                    <optgroup label="Education" nhdata-group="education"></optgroup>
+                                    <optgroup label="Economy" nhdata-group="economy"></optgroup>
+                                    <optgroup label="Housing" nhdata-group="housing"></optgroup>
+                                    <optgroup label="Engagement" nhdata-group="engagement"></optgroup>
+                                    <!-- <optgroup label="Engagement" data-group="engagement"></optgroup> -->
+                                    <optgroup label="Safety" nhdata-group="safety"></optgroup>
+                                </select>
+                                <table>
+	                      			<td>
+		                      			<label id="all_metricsLabel" class="checkbox" for="all_metrics">
+		                                    <input type="checkbox" id="all_metrics"> Select All
+		                                </label>
+		                            </td>
+		                            <td>
+		                            	<label id="metricCount" style="margin-left: 40px"></label>
+		                            </td>
+		                        </table>    
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input class="btn btn-primary" type="submit" onclick="popup()" id="submitPDFReport" name="mysubmit" value="Create Custom Report" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <table class="pull-right" >
+	                <!-- <td style="padding-right: 50px; vertical-align: middle">
+	                	<input class="btn btn-primary" type="submit" onclick="popup()" id="submitPDFReport" name="mysubmit" value="Create Custom Report" />
+	                </td> -->
+	                <td style="padding-right: 50px; vertical-align: middle">
+	                	<a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+	            	</td>
+	            </table>
+            </div>
+        </div>
+		<div class="modal hide fade"  id="modalReportCounty">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Countywide Report</h3>
+            </div>
+            <div class="modal-body">
+                <form action="php/reportCounty.php" method="get" target="_blank">
+                <table style="padding-bottom: 10px;">
+                    <td  height="40" style="vertical-align: middle"><input type="radio" id="censusRadioReport_county" class="input-large" checked="checked" name="reportRadio" value="census" onclick="clickReport_county(this.value)"/>Blockgroups</td>
+                    <td  height="40" style="vertical-align: middle"><input type="radio" id="neighborhoodRadioReport_county" class="input-large" name="reportRadio" value="neighborhood" onclick="clickReport_county(this.value)"/>Neighborhoods</td>
+                    <!--//***** timeseries component -->
+                	<td  height="40" width="250" align="right" style="vertical-align: middle" >Year:  <select id="report_year_county" name="reportYear_county" style="width: 70px"><option value="2013">2013</option><option value="2014">2014</option></select></td>
+                </table>
+                    <div class="form-horizontal">
+                        <div class="control-group">
+                        	<label class="control-label" id="cbReportLabel_county" for="cbreport_metrics_county"><strong>Blockgroup Variables</strong></label>
+                            <label class="control-label" id="nhReportLabel_county" for="nhreport_metrics_county"><strong>Neighborhood Variables</strong></label>
+                            <div class="controls">
+                                <select id="cbreport_metrics_county" name="cbM_county[]" class="input" onchange="reportFormCheck('census')">
+                                    <!--*****Add new Block Group category here Part II. NOTE: The data-group property must match the category attribute in metricsBGsDEV.json*****-->
+                                    <optgroup label="Demographics" data-group="demographics"></optgroup>
+                                    <optgroup label="Infrastructure &amp Amenities" data-group="amenities"></optgroup>
+                                    <optgroup label="Education" data-group="education"></optgroup>
+                                    <optgroup label="Economy" data-group="economy"></optgroup>
+                                    <optgroup label="Housing" data-group="housing"></optgroup>
+                                    <optgroup label="Engagement" data-group="engagement"></optgroup>
+                                    <optgroup label="Environment" data-group="environment"></optgroup>
+                                    <optgroup label="Safety" data-group="safety"></optgroup>
+                                </select>
+                            </div>
+                            <div class="controls">
+                                <select id="nhreport_metrics_county" name="nhM_county[]" class="input" onchange="reportFormCheck('neighborhood')">
+                                    <!--//*****Add new Neighborhood category here Part II NOTE: The id property must match the category attribute in metricsNHsDEV.json*****-->
+                                    <optgroup label="Infrastructure &amp Amenities" nhdata-group="amenities"></optgroup>
+                                    <optgroup label="Education" nhdata-group="education"></optgroup>
+                                    <optgroup label="Economy" nhdata-group="economy"></optgroup>
+                                    <optgroup label="Housing" nhdata-group="housing"></optgroup>
+                                    <optgroup label="Engagement" nhdata-group="engagement"></optgroup>
+                                    <!-- <optgroup label="Engagement" data-group="engagement"></optgroup> -->
+                                    <optgroup label="Safety" nhdata-group="safety"></optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input class="btn btn-primary" type="submit" onclick="popup()" id="submitPDFReport" name="mysubmit" value="Create Custom Report" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            </div>
+        </div>
+
+        <!-- Javascript at the end -->
+        <script src="https://www.google.com/jsapi"></script>
+        <script>google.load("visualization", "1", {packages:["corechart"]});</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+        <script src="scripts/vendor/leaflet-providers.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-tooltip.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-modal.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-transition.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-button.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-popover.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-dropdown.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-collapse.js"></script>
+        <script src="scripts/vendor/bootstrap/bootstrap-transition.js"></script>
+        <script src="scripts/vendor/jquery-ui-1.10.0.custom.min.js"></script>
+        <script src="scripts/geoservices.js" type="text/javascript"></script>
+        <script src="scripts/terraformer-min.js" type="text/javascript"></script>
+        <script src="scripts/esri-leaflet.js" type="text/javascript"></script>
+        <script src="scripts/plugins.js"></script>
+        <script src="scripts/main.js"></script>
+        <script>
+            var _gaq=[['_setAccount','UA-46577629-1'],['_trackPageview']];//compass = UA-46577629-1; compassLab = UA-47136977-1 
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s);}(document,'script'));
+        </script>
+
+    </body>
+</html>

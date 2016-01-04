@@ -1,0 +1,172 @@
+{
+	"VCODEV_13": {
+        "db": "VCODEV_13",
+        "field": "VCODEV_13",
+        "category": "environment",
+        "title": "Automotive Code Violations",
+        "description": "Automotive code violations per 100 dwelling units.",
+        "importance": "In addition to being unsightly, abandoned and junked vehicles can also be hazardous, whether by leaking contaminants, providing shelter for vermin and pests, or by attracting criminal activity. The City vehicle ordinance is enforced by the Neighborhood Improvement Services department.",
+        "tech_notes": "The number of automotive code violations divided by the estimated dwelling unit count, multiplied by 100. This measurement includes abandoned and hazardous, as well as junked vehicle violations. It excludes calls found to be not in violation. This measurement reflects a City-only service and parts of Durham County are not represented by this data.",
+        "source": "City of Durham Neighborhood Improvement Services (2012)",
+        "links": "<a href='http://durhamnc.gov/ich/cmo/Pages/DOC/home.aspx' target='_blank'>Durham One Call</a><br><a href='http://durhamnc.gov/ich/cb/nis/Documents/Vehicle%20Ordinances%20(2).pdf' target='_blank'>City of Durham Vehicle Ordinance</a><br><a href='http://durhamnc.gov/ich/cb/nis/Pages/Home.aspx' target='_blank'>Neighborhood Improvement Services</a>",
+        "style": {
+            "breaks": [
+                0,
+                0.5,
+                1.5
+            ],
+            "colors": [
+                "#9ECAE1",
+                "#4292C6",
+                "#084594"
+            ]
+        }
+    },
+    "VCODEV_14": {
+        "db": "VCODEV_14",
+        "field": "VCODEV_14",
+        "category": "environment",
+        "title": "Automotive Code Violations",
+        "description": "Automotive code violations per 100 dwelling units.",
+        "importance": "In addition to being unsightly, abandoned and junked vehicles can also be hazardous, whether by leaking contaminants, providing shelter for vermin and pests, or by attracting criminal activity. The City vehicle ordinance is enforced by the Neighborhood Improvement Services department.",
+        "tech_notes": "The number of automotive code violations divided by the estimated dwelling unit count, multiplied by 100. This measurement includes abandoned and hazardous, as well as junked vehicle violations. It excludes calls found to be not in violation. This measurement reflects a City-only service and parts of Durham County are not represented by this data.",
+        "source": "City of Durham Neighborhood Improvement Services (2013)",
+        "links": "<a href='http://durhamnc.gov/ich/cmo/Pages/DOC/home.aspx' target='_blank'>Durham One Call</a><br><a href='http://durhamnc.gov/ich/cb/nis/Documents/Vehicle%20Ordinances%20(2).pdf' target='_blank'>City of Durham Vehicle Ordinance</a><br><a href='http://durhamnc.gov/ich/cb/nis/Pages/Home.aspx' target='_blank'>Neighborhood Improvement Services</a>",
+        "style": {
+            "breaks": [
+                0,
+                0.5,
+                1.5
+            ],
+            "colors": [
+                "#9ECAE1",
+                "#4292C6",
+                "#084594"
+            ]
+        }
+    }
+    
+    
+    "PTPRIM_13": {
+        "db": "PTPRIM_13",
+        "field": "PTPRIM_13",
+        "category": "engagement",
+        "title": "Primary election participation",
+        "description": "The percent of active voters participating in 2012 primary elections.",
+        "importance": "Not all registered voters vote in a primary election, though in North Carolina they can. In some states, only those affiliated with a party are able to vote for their party's candidates. In North Carolina any registered voter can cast a ballot in a primary. <br><br> Typically, many fewer individuals vote in primary elections, and those that do are expressing additional interest in local or partisan issues and policies. As an indicator of engagement this measurement is both a reflection of above-average voting activity, and a reflection of deeper engagement in the political process and its institutions. ",
+        "tech_notes": "The data included in this measure reflect active voters only. The Board of Elections codes voters 'inactive' when their most recent address may be inaccurate. Due to the potentially inaccurate addresses of inactive voters, this spatial analysis relies only on the active voters. As of January 2014, there were 176,148 active voters out of a total 200,885 registered in Durham County.",
+        "source": "Durham County Board of Elections, 2012.",
+        "links": "<a href='http://dconc.gov/index.aspx?page=95' target='_blank'>Durham County Board of Elections</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                8.7,
+                35.3,
+                52.4
+            ],
+            "colors": [
+                "#9ECAE1",
+                "#4292C6",
+                "#084594"
+            ]
+        }
+    },
+    "PTPRIM_13": {
+        "db": "PTPRIM_13",
+        "field": "PTPRIM_13",
+        "category": "engagement",
+        "title": "Primary election participation",
+        "description": "The percent of active voters participating in 2012 primary elections.",
+        "importance": "Not all registered voters vote in a primary election, though in North Carolina they can. In some states, only those affiliated with a party are able to vote for their party's candidates. In North Carolina any registered voter can cast a ballot in a primary. <br><br> Typically, many fewer individuals vote in primary elections, and those that do are expressing additional interest in local or partisan issues and policies. As an indicator of engagement this measurement is both a reflection of above-average voting activity, and a reflection of deeper engagement in the political process and its institutions. ",
+        "tech_notes": "The data included in this measure reflect active voters only. The Board of Elections codes voters 'inactive' when their most recent address may be inaccurate. Due to the potentially inaccurate addresses of inactive voters, this spatial analysis relies only on the active voters. As of January 2014, there were 176,148 active voters out of a total 200,885 registered in Durham County.",
+        "source": "Durham County Board of Elections, 2012.",
+        "links": "<a href='http://dconc.gov/index.aspx?page=95' target='_blank'>Durham County Board of Elections</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                8.7,
+                35.3,
+                52.4
+            ],
+            "colors": [
+                "#9ECAE1",
+                "#4292C6",
+                "#084594"
+            ]
+        }
+    },
+    "PTPRIM_14": {
+        "db": "PTPRIM_14",
+        "field": "PTPRIM_14",
+        "category": "engagement",
+        "title": "Primary election participation",
+        "description": "The percent of active voters participating in 2012 primary elections.",
+        "importance": "Not all registered voters vote in a primary election, though in North Carolina they can. In some states, only those affiliated with a party are able to vote for their party's candidates. In North Carolina any registered voter can cast a ballot in a primary. <br><br> Typically, many fewer individuals vote in primary elections, and those that do are expressing additional interest in local or partisan issues and policies. As an indicator of engagement this measurement is both a reflection of above-average voting activity, and a reflection of deeper engagement in the political process and its institutions. ",
+        "tech_notes": "The data included in this measure reflect active voters only. The Board of Elections codes voters 'inactive' when their most recent address may be inaccurate. Due to the potentially inaccurate addresses of inactive voters, this spatial analysis relies only on the active voters. As of January 2014, there were 176,148 active voters out of a total 200,885 registered in Durham County.",
+        "source": "Durham County Board of Elections, 2012.",
+        "links": "<a href='http://dconc.gov/index.aspx?page=95' target='_blank'>Durham County Board of Elections</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                8.7,
+                35.3,
+                52.4
+            ],
+            "colors": [
+                "#9ECAE1",
+                "#4292C6",
+                "#084594"
+            ]
+        }
+    },
+    "PTGNRL_13": {
+        "db": "PTGNRL_13",
+        "field": "PTGNRL_13",
+        "category": "engagement",
+        "title": "General election participation",
+        "description": "The percent of active voters participating in 2012 general election.",
+        "importance": "Participation of registered voters in general elections reflects one of the primary activities of civic engagement. There are many reasons voters may or may not participate in a general election (which occurs every four years and includes the election of a presidential candidate). At its root, where a voting age population exists this measurement reflects the degree of community engagement in our electoral process and the perception that it is meaningful in the lives of community members.",
+        "tech_notes": "The data included in this measure reflect active voters only. The Board of Elections codes voters 'inactive' when their most recent address may be inaccurate. Due to the potentially inaccurate addresses of inactive voters, this spatial analysis relies only on the active voters. As of January 2014, there were 176,148 active voters out of a total 200,885 registered in Durham County.",
+        "source": "Durham County Board of Elections, 2012.",
+        "links": "<a href='http://dconc.gov/index.aspx?page=95' target='_blank'>Durham County Board of Elections</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                50,
+                73.6,
+                82.8
+            ],
+            "colors": [
+                "#9ECAE1",
+                "#4292C6",
+                "#084594"
+            ]
+        }
+    },
+    "PTGNRL_14": {
+        "db": "PTGNRL_14",
+        "field": "PTGNRL_14",
+        "category": "engagement",
+        "title": "General election participation",
+        "description": "The percent of active voters participating in 2012 general election.",
+        "importance": "Participation of registered voters in general elections reflects one of the primary activities of civic engagement. There are many reasons voters may or may not participate in a general election (which occurs every four years and includes the election of a presidential candidate). At its root, where a voting age population exists this measurement reflects the degree of community engagement in our electoral process and the perception that it is meaningful in the lives of community members.",
+        "tech_notes": "The data included in this measure reflect active voters only. The Board of Elections codes voters 'inactive' when their most recent address may be inaccurate. Due to the potentially inaccurate addresses of inactive voters, this spatial analysis relies only on the active voters. As of January 2014, there were 176,148 active voters out of a total 200,885 registered in Durham County.",
+        "source": "Durham County Board of Elections, 2012.",
+        "links": "<a href='http://dconc.gov/index.aspx?page=95' target='_blank'>Durham County Board of Elections</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                50,
+                73.6,
+                82.8
+            ],
+            "colors": [
+                "#9ECAE1",
+                "#4292C6",
+                "#084594"
+            ]
+        }
+    },
+    
+    
+}

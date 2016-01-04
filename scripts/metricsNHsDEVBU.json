@@ -1,0 +1,500 @@
+{
+    "PCTST2BASE": {
+        "db": "PCTST2BASE",
+        "field": "PCTST2BASE",
+        "category": "education",
+        "title": "Students Attending Base School",
+        "description": "The percent of Durham Public Schools students in each neighborhood who attend their local community school.",
+        "importance": "Durham Public Schools offers significant options in school choice.  Families can choose their community school or apply to schools with specific themes.  Transportation is typically available for all options but can vary in time and distance.  This data reveals how frequently families choose each option.",
+        "tech_notes": "The percent of students attending base schools is derived from the number of base school attendees divided by total Durham Public School students. This does not include students attending private or charter schools.",
+        "source": "Durham Public Schools (2013)",
+        "links": "<a href='http://www.dpsnc.net/about-dps/departments/student-assignment' target='_blank'>Durham Public Schools Student Assignment</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                0,
+                27,
+                60
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "PCTES2BASE": {
+        "db": "PCTES2BASE",
+        "field": "PCTES2BASE",
+        "category": "education",
+        "title": "Students Attending Base School: Grade 5 and Below",
+        "description": "The percent of Durham Public Schools students in each neighborhood who attend their local community school.",
+        "importance": "Durham Public Schools offers significant options in school choice.  Families can choose their community school or apply to schools with specific themes.  Transportation is typically available for all options but can vary in time and distance.  This data reveals how frequently families choose each option.",
+        "tech_notes": "The percent of students attending base schools is derived from the number of base school attendees divided by total Durham Public School students. This does not include students attending private or charter schools.",
+        "source": "Durham Public Schools (2013)",
+        "links": "<a href='http://www.dpsnc.net/about-dps/departments/student-assignment' target='_blank'>Durham Public Schools Student Assignment</a><br><a href='http://www.dpsnc.net/programs-services/magnet-programs-old/magnet-resources/magnet-resources/magnet-attendance-and-movement' target='_blank'>DPS Elementary Attendance and Movement</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                0,
+                31,
+                64
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "PCTMS2BASE": {
+        "db": "PCTMS2BASE",
+        "field": "PCTMS2BASE",
+        "category": "education",
+        "title": "Students Attending Base School: Grades 6 to 8",
+        "description": "The percent of Durham Public Schools students in each neighborhood who attend their local community school.",
+        "importance": "Durham Public Schools offers significant options in school choice.  Families can choose their community school or apply to schools with specific themes.  Transportation is typically available for all options but can vary in time and distance.  This data reveals how frequently families choose each option.",
+        "tech_notes": "The percent of students attending base schools is derived from the number of base school attendees divided by total Durham Public School students. This does not include students attending private or charter schools.",
+        "source": "Durham Public Schools (2013)",
+        "links": "<a href='http://www.dpsnc.net/about-dps/departments/student-assignment' target='_blank'>Durham Public Schools Student Assignment</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                0,
+                20,
+                61
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "PCTHS2BASE": {
+        "db": "PCTHS2BASE",
+        "field": "PCTHS2BASE",
+        "category": "education",
+        "title": "Students Attending Base School: Grades 9 to 12",
+        "description": "The percent of Durham Public Schools students in each neighborhood who attend their local community school.",
+        "importance": "Durham Public Schools offers significant options in school choice.  Families can choose their community school or apply to schools with specific themes.  Transportation is typically available for all options but can vary in time and distance.  This data reveals how frequently families choose each option.",
+        "tech_notes": "The percent of students attending base schools is derived from the number of base school attendees divided by total Durham Public School students. This does not include students attending private or charter schools.",
+        "source": "Durham Public Schools (2013)",
+        "links": "<a href='http://www.dpsnc.net/about-dps/departments/student-assignment' target='_blank'>Durham Public Schools Student Assignment</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                0,
+                35,
+                75
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "PCTR_BUSST": {
+        "db": "PCTR_BUSST",
+        "field": "PCTR_BUSST",
+        "category": "amenities",
+        "title": "Households Within Walking Distance to Bus Stops",
+        "description": "The percent of households that are within one quarter-mile of DATA and Triangle Transit bus stops.",
+        "importance": "Household proximity to public transit indicates transportation options for those with cars and indicates access to regional transportation for those without cars. This measurement is one of three included in the Compass that gauge the effectiveness of public transit service to neighborhoods (daily and nightly bus arrivals are the other two).",
+        "tech_notes": "Households include all residential units, not just residential parcels. The 1/4 mile distance is Euclidean, or as-the-crow-flies. Bus stop locations used in this calculation are those active from January 1 to July 1 of 2013.",
+        "source": "DATA/Triangle Transit, Tax Administration/City-County GIS (2013)",
+        "links": "<a href='http://www.triangletransit.org/' target='_blank'>Triangle Transit</a><br><a href='http://www.gotriangle.org/go-local/partners/durham-area-transit-authority/' target='_blank'>Durham Area Transit Authority</a>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                0,
+                19,
+                63
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "DAYTRIPS": {
+        "db": "DAYTRIPS",
+        "field": "DAYTRIPS",
+        "category": "amenities",
+        "title": "Total Daily Bus Arrivals",
+        "description": "The count of daytime bus arrivals for all routes in the selected neighborhood.",
+        "importance": "This measurement is one of three included in the Compass that gauge the effectiveness of public transit service to neighborhoods (nightly bus arrivals and households within a quarter mile of transit stops are the other two)",
+        "tech_notes": "Bus routes  used in this calculation are those active as of August 28, 2013 and do not serve all areas of Durham County. Click <a href='http://www.triangletransit.org/sites/default/files/maps-and-schedules/RoutesAndSchedules-system_map.pdf' target='_blank'> here</a> for a map of the Triangle Transit service area and <a href='http://www.gotriangle.org/images/uploads/DATA_SystemMap_2012_web.pdf' target='_blank'>here</a> for a map of DATA's service area.",
+        "source": "DATA/Triangle Transit (2013)",
+        "links": "<a href='http://www.triangletransit.org/' target='_blank'>Triangle Transit</a><br><a href='http://www.gotriangle.org/go-local/partners/durham-area-transit-authority/' target='_blank'>Durham Area Transit Authority</a>",
+        "style": {
+            "breaks": [
+                0,
+                53,
+                106
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "EVETRIPS": {
+        "db": "EVETRIPS",
+        "field": "EVETRIPS",
+        "category": "amenities",
+        "title": "Total Nightly Bus Arrivals",
+        "description": "The count of nighttime bus arrivals for all routes in the selected neighborhood.",
+        "importance": "This measurement is one of three that gauge the effectiveness of public transit service to neighborhoods (daily bus arrivals and households within a quarter mile of transit stops are the other two).",
+        "tech_notes": "Bus routes  used in this calculation are those active as of August 28, 2013 and do not serve all areas of Durham County. Click <a href='http://www.triangletransit.org/sites/default/files/maps-and-schedules/RoutesAndSchedules-system_map.pdf' target='_blank'> here</a> for a map of the Triangle Transit service area and <a href='http://www.gotriangle.org/images/uploads/DATA_SystemMap_2012_web.pdf' target='_blank'>here</a> for a map of DATA's service area.",
+        "source": "DATA/Triangle Transit (2013)",
+        "links": "<a href='http://www.triangletransit.org/' target='_blank'>Triangle Transit</a><br><a href='http://www.gotriangle.org/go-local/partners/durham-area-transit-authority/' target='_blank'>Durham Area Transit Authority</a>",
+        "style": {
+            "breaks": [
+                0,
+                11,
+                23
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "PCTR_BANK": {
+        "db": "PCTR_BANK",
+        "field": "PCTR_BANK",
+        "category": "amenities",
+        "title": "Households Within Walking Distance to Banks",
+        "description": "The percent of area households within a quarter-mile of a commercial bank or credit union.",
+        "importance": "Banking is a core community service, providing financial planning, savings, and management services to households. Neighborhoods without easy access to such core services are transportation dependent for primary needs, leading to higher costs of living and reliance on inadequate convenience services.",
+        "tech_notes": "This measurement includes both commercial bank locations and credit unions. These are identified primarily by North American Industry Classification System (NAICS) codes 52211 and 52213. The 1/4 mile distance is Euclidean, or as-the-crow-flies.",
+        "source": "City of Durham Transportation, Tax Administration/City-County GIS (2013)",
+        "links": "<a href='http://www.durham-nc.com/newcomers/newcomer-services/banks.php' target='_blank'>Durham-Based Banking<a/>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                0,
+                14.3,
+                50
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "PCTR_GRCR": {
+        "db": "PCTR_GRCR",
+        "field": "PCTR_GRCR",
+        "category": "amenities",
+        "title": "Households Within Walking Distance to Full Service Grocers",
+        "description": "The percent of area households within a quarter-mile of full-service, grocery stores.",
+        "importance": "Grocery stores are among the core services a community needs, providing reliable access to basic foods: dry goods, meat, fresh produce, and dairy. Neighborhoods without easy access to grocers are transportation-dependent for core needs, leading to higher costs of living and reliance on inadequate convenience food sources.",
+        "tech_notes": "Grocery stores include chain groceries and independent full-service stores. These are identified primarily by North American Industry Classification System (NAICS) code 44511. The 1/4 mile distance is Euclidean, or as-the-crow-flies.",
+        "source": "City of Durham Transportation, Tax Administration/City-County GIS (2013)",
+        "links": "<a href='http://www.umdurham.org/' target='_blank'>Urban Ministries of Durham<a/><br><a href='http://www.foodbankcenc.org/site/PageServer?pagename=FBCENCHome' target='_blank'>Food Bank of Central & Eastern North Carolina<a/><br><a href='http://www.med.unc.edu/im/staff/clinic/programs/care-management/files-community-resources/DURHAM_Food_Pantries.pdf' target='_blank'>Durham County Food Pantries<a/>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                0,
+                17,
+                63
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "PCTR_PHARM": {
+        "db": "PCTR_PHARM",
+        "field": "PCTR_PHARM",
+        "category": "amenities",
+        "title": "Households Within Walking Distance to Pharmacies",
+        "description": "The percent of area households within a quarter-mile of pharmacies.",
+        "importance": "Pharmacies are among the core services a community needs. They allow access to prescriptions and basic household pharmaceuticals, medical devices and preventative care products. In addition, many pharmacies offer 'minute-clinics' for basic primary care services.",
+        "tech_notes": "Pharmacies include traditional storefront locations of independent and chain drug stores, as well as big-box retail locations. These are identified primarily by North American Industry Classification System (NAICS) code 44611. The 1/4 mile distance is Euclidean, or as-the-crow-flies.",
+        "source": "City of Durham Transportation, Tax Administration/City-County GIS (2013)",
+        "links": "<a href='http://www.seniorpharmassist.org/' target='_blank'>Senior PharmAssist<a/><br><a href='http://dconc.gov/index.aspx?page=379&redirect=1' target='_blank'>Durham County Health Department<a/>",
+        "style": {
+            "units": "%",
+            "breaks": [
+                0,
+                5,
+                30
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "SWTORD": {
+        "db": "SWTORD",
+        "field": "SWTORD",
+        "category": "amenities",
+        "title": "Sidewalk-to-Roadway Ratio",
+        "description": "The ratio of sidewalk length to road length in the selected area.",
+        "importance": "This ratio indicates how well-served an area is by sidewalks. The ratio is to be read as the number of sidewalk feet for every hundred feet of roadway in a neighborhood. If the number is more than 100, it is likely due to sidewalks existing on both sides of many neighborhood streets.",
+        "tech_notes": "The intention of this measurement is to indicate how well neighborhood roads serve pedestrians. Pedestrian or bike paths not adjacent to roadways are not among the sidewalks counted here. Areas reporting 'N/A' are outside City limits and do not contain annexed communities - the City does not maintain or build sidewalks in those areas.",
+        "source": "City of Durham Public Works, 2013",
+        "links": "<a href='http://durhamnc.gov/ich/op/pwd/consproj/Pages/SW-29.aspx' target='_blank'>2013 Sidewalk Repairs and Curb Ramps (SW-29)<a/><br><a href='http://durhamnc.gov/ich/op/pwd/Pages/Powell_Bill_Report.pdf' target='_blank'>City-Maintained Streets<a/>",
+        "style": {
+            "breaks": [
+                0,
+                27,
+                69
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "LUDIVERS": {
+        "db": "LUDIVERS",
+        "field": "LUDIVERS",
+        "category": "economy",
+        "title": "Land Use Diversity",
+        "description": "The indexed diversity of land uses including these categories: agriculture, residential, commercial, recreation, industrial, community services, public services (utilities), wild and forested lands.",
+        "importance": "The diversity of land uses can reflect the richness of social and economic life in a community. Just as mixed uses in a single property are desirable for bringing people and their service or amenity needs closer to one another, the same is true within neighborhoods. Land use diversity can have transportation, health and environmental associations as well as create greater collocation of jobs and housing.",
+        "tech_notes": "A higher value in this measure reflects both a higher number of land use categories present and more properties in each category. A measure of 100 would mean each of the possible types of land use is present and that there is an equal number of each. A measure of 0 would mean only one type is present. The calculation of this measurement uses the Simpson Index of Diversity.",
+        "source": "City of Durham Neighborhood Improvement Services and Durham County Tax Administration (2013)",
+        "links": "<a href='http://planningandactivity.unc.edu/Mixed%20land%20uses%20White%20Paper.pdf' target='_blank'>The Measurement of the Level of Mixed Land Uses: A Synthetic Approach</a>",
+        "style": {
+            "breaks": [
+                0,
+                11,
+                34
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },    
+    "RVALPSM_12": {
+        "db": "RVALPSM_12",
+        "field": "RVALPSM_12",
+        "category": "economy",
+        "title": "Residential Building Permit Values per Sq Mi",
+        "description": "The value per square mile of residential building permits filed during the 2012 calendar year.",
+        "importance": "Residential building permit values reflect active investment in property, whether improvements or maintenance for existing residences or development of new homes.",
+        "tech_notes": "The value of residential building permits for each boundary divided by the area (in square miles) of each. These permits include new construction as well as renovations and exclude demolitions.",
+        "source": "Durham City/County Inspections Department (2012)",
+        "links": "<a href='http://durhamnc.gov/ich/cb/oewd/Pages/Home.aspx' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/ich/cb/ccid/Pages/Home.aspx' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/><br><a href='http://durhamnc.gov/ich/cb/cdd/Pages/Home.aspx' target='_blank'>Durham Community Development Department</a>",
+        "style": {
+            "prefix": "$",
+            "units": "/sq. mile",
+            "breaks": [
+                0,
+                1000000,
+                50000000
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "CVALPSM_12": {
+        "db": "CVALPSM_12",
+        "field": "CVALPSM_12",
+        "category": "economy",
+        "title": "Commercial Building Permit Values per Sq Mi",
+        "description": "The value per square mile of commercial building permits filed during the 2012 calendar year.",
+        "importance": "Commercial building permit values reflect active investment in property, whether improvements to or maintenance of existing properties or development of new commercial properties.",
+        "tech_notes": "The value of commercial, business, and industrial building permits for each boundary divided by the area (in square miles) of each. These permits include new construction as well as renovations and exclude demolitions.",
+        "source": "Durham City/County Inspections Department (2012)",
+        "links": "<a href='http://durhamnc.gov/ich/cb/oewd/Pages/Home.aspx' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/ich/cb/ccid/Pages/Home.aspx' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
+        "style": {
+            "prefix": "$",
+            "units": "/sq. mile",
+            "breaks": [
+                0,
+                935500,
+                35000000
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "R_AVGYR": {
+        "db": "R_AVGYR",
+        "field": "R_AVGYR",
+        "category": "housing",
+        "title": "Average Year of Residential Construction",
+        "description": "The average year built of all types of residential construction.",
+        "importance": "The age of housing generally reflects the development history of the city - Durham's oldest neighborhoods have average residential construction years in the 1920s and 30s. This measure can also indicate greater maintenance needs for a community's housing stock. If a community has a concentration of building code violations and aging housing it may warrant focused efforts in repairing, restoring, and preserving housing.",
+        "tech_notes": "The average age of all residential units - including single-family, multi-family, townhouse and all other residential categories.",
+        "source": "Durham County Tax Administration (2013)",
+        "links": "<a href='http://durhamnc.gov/ich/cb/nis/Pages/Home.aspx' target='_blank'>City of Durham Neighborhood Improvement Services</a><br><a href='http://durhamnc.gov/ich/cb/cdd/Pages/Home.aspx' target='_blank'>City of Durham Community Development</a><br><a href='http://www.durhamhabitat.org/>Habitat Durham</a><br><a href='http://preservationdurham.org/' target='_blank'>Preservation Durham</a><br><a href='http://www.opendurham.org/' target='_blank'>Open Durham</a>",
+        "style": {
+            "breaks": [
+                0,
+                1961,
+                1988
+            ],
+            "colors": [
+                "#154F4A",
+                "#2ca79e",
+                "#D8F2ED"
+            ]
+        }
+    },
+    "RCODEV_12": {
+        "db": "RCODEV_12",
+        "field": "RCODEV_12",
+        "category": "housing",
+        "title": "Minimum Housing Code Violations",
+        "description": "Minimum housing code violations per 100 dwelling units.",
+        "importance": "Violations of the City minimum housing code can interfere with the safety and quality of life of residents and can have a negative impact on surrounding homes and properties. The City of Durham minimum housing standards code is enforced by the Neighborhood Improvement Services department.",
+        "tech_notes": "The number of minimum housing code violations divided by the estimated dwelling unit count, multiplied by 100. This measurement includes all minimum housing code violations, excluding calls found to be not in violation. This does include orders to repair, demolish, unsafe structures, and boarded properties. NOTE: These numbers may be higher in areas where the City's Proactive Rental Inspection Program (PRIP) is active. For a map of these areas, please refer to the PRIP link in Additional Resources. Because minimum housing code is enforced by the City of Durham but not outside the city in Durham County, this measurement reflects a City-only service and parts of Durham County are not represented by this data. Dwelling unit estimates for this measure therefore only count those within the City administrative boundary.",
+        "source": "City of Durham Neighborhood Improvement Services (2012)",
+        "links": "<a href='http://durhamnc.gov/ich/cb/nis/Pages/NIS_PRIP.aspx' target='_blank'>Proactive Rental Inspection Program</a><br><a href='http://durhamnc.gov/ich/cmo/Pages/DOC/home.aspx' target='_blank'>Durham One Call</a><br><a href='http://durhamnc.gov/ich/cb/nis/Documents/MHC%20amended%206-4-12.pdf' target='_blank'>North Carolina Minimum Housing Code</a><br><a href='http://durhamnc.gov/ich/cb/nis/Pages/Home.aspx' target='_blank'>Neighborhood Improvement Services</a>",
+        "style": {
+            "breaks": [
+                0,
+                5.4,
+                32
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "WCODEV_12": {
+        "db": "WCODEV_12",
+        "field": "WCODEV_12",
+        "category": "housing",
+        "title": "Unmaintained Property Violations",
+        "description": "Unmaintained property violations per 100 dwelling units.",
+        "importance": "Unmaintained properties can have a serious impact on neighborhoods. Unmaintained lots can influence property values for surrounding homes, they can draw increased criminal activity, and they can become home to unwanted vermin and pests. The City of Durham ordinance regarding unmaintained properties is enforced by the Neighborhood Improvement Services department.",
+        "tech_notes": "The number of unmaintained property violations divided by the estimated dwelling unit count, multiplied by 100. This measurement includes all unmaintained property ('weedy lot') violations, not including calls found to be not in violation or those involving commercial properties. This measurement, along with residential building code violations and abandoned, hazardous or junked vehicles reflect a City-only service and parts of Durham County are not represented by this data.",
+        "source": "City of Durham Neighborhood Improvement Services (2012)",
+        "links": "<a href='http://durhamnc.gov/ich/cmo/Pages/DOC/home.aspx' target='_blank'>Durham One Call</a><br><a href='http://durhamnc.gov/ich/op/swmd/Pages/Collection-Services.aspx' target='_blank'>Solid Waste Collection Services</a><br><a href='http://durhamnc.gov/ich/cb/nis/Documents/Housing%20Code%20and%20Ordinance%20Documents/Weeds-Junk-Debris%20Ordinances%20%283%29.pdf' target='_blank'>City of Durham Weeds, Trash, and Debris Ordinances</a><br><a href='http://durhamnc.gov/ich/cb/nis/Pages/Home.aspx' target='_blank'>Neighborhood Improvement Services</a>",
+        "style": {
+            "breaks": [
+                0,
+                2,
+                7
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "ACODEV_12": {
+        "db": "ACODEV_12",
+        "field": "ACODEV_12",
+        "category": "environment",
+        "title": "Automotive Code Violations",
+        "description": "Automotive code violations per 100 dwelling units.",
+        "importance": "In addition to being unsightly, abandoned and junked vehicles can also be hazardous, whether by leaking contaminants, providing shelter for vermin and pests, or by attracting criminal activity. The City vehicle ordinance is enforced by the Neighborhood Improvement Services department.",
+        "tech_notes": "The number of automotive code violations divided by the estimated dwelling unit count, multiplied by 100. This measurement includes abandoned and hazardous, as well as junked vehicle violations. It excludes calls found to be not in violation. This measurement reflects a City-only service and parts of Durham County are not represented by this data.",
+        "source": "City of Durham Neighborhood Improvement Services (2012)",
+        "links": "<a href='http://durhamnc.gov/ich/cmo/Pages/DOC/home.aspx' target='_blank'>Durham One Call</a><br><a href='http://durhamnc.gov/ich/cb/nis/Documents/MHC%20amended%206-4-12.pdf' target='_blank'>City of Durham Vehicle Ordinance</a><br><a href='http://durhamnc.gov/ich/cb/nis/Pages/Home.aspx' target='_blank'>Neighborhood Improvement Services</a>",
+        "style": {
+            "breaks": [
+                0,
+               0.6,
+                2
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "V_PER_SQMI": {
+        "db": "V_PER_SQMI",
+        "field": "V_PER_SQMI",
+        "category": "safety",
+        "title": "Crimes with a Violent Component",
+        "description": "The number of crimes per square mile with a violent component that occurred in calendar year 2012.",
+        "importance": "The violent crime rate is an indicator of basic community safety and well-being. Residents, organizations, and government alike can use this information to address high rates of violent crime where they exist and to monitor the impact of efforts to stop violent crime.",
+        "tech_notes": "Violent crimes are commonly reported with parts 1 and 2 separate. This measurement is different, including all part 1 violent crimes and these part 2 crimes: simple assaults, certain sex offenses, child abuse and kidnapping. The number of these violent crimes occurring in each boundary is divided by the area (in square miles) of the boundary, rather than the population. This is intended to control for how crime often happens in areas that are less populated. For more detailed Durham crime reporting visit RAIDS Online.",
+        "source": "Durham Police Department and Durham County Sheriff's Office (2012)",
+        "links": "<a href='http://raidsonline.com' target='_blank'>RAIDS Online</a><br><a href='http://gisweb.durhamnc.gov/gis_apps/crimedata/dsp_entryform.cfm' target='_blank'>Durham Crime Mapper<a/><br><a href='http://durhamnc.gov/ich/op/DPD/Pages/Home.aspx' target='_blank'>Durham Police Department</a><br><a href='http://dconc.gov/index.aspx?page=475' target='_blank'>Durham County Office of the Sheriff</a><br><a href='http://durhamnc.gov/ich/op/DPD/Pages/CPA.aspx' target='_blank'>Citizens Police Academy</a><br><a href='http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx' target='_blank'>Partners Against Crime</a>",
+        "style": {
+            "units": "/sq. mile",
+            "breaks": [
+                0,
+                15,
+                65
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "P_PER_SQMI": {
+        "db": "P_PER_SQMI",
+        "field": "P_PER_SQMI",
+        "category": "safety",
+        "title": "Crimes Involving Property",
+        "description": "The number of crimes per square mile involving property that occurred in calendar year 2012.",
+        "importance": "The property crime rate is directly related to resident safety and well-being. Property crime also impacts perception of neighborhood safety and often represents a loss of or damage to private property.",
+        "tech_notes": "Property crimes are commonly reported with parts 1 and 2 separate. This measurement is different, including all part 1 property crimes and these part 2 crimes: fraud, forgery, embezzlement, counterfeiting, stolen property and vandalism. The number of property crimes occurring in each boundary is divided by the area (in square miles) of the boundary, rather than the population. This is intended to control for how crime often happens in areas that are less populated. For more detailed Durham crime reporting visit RAIDS Online.",
+        "source": "Durham Police Department and Durham County Sheriff's Office (2012)",
+        "links": "<a href='http://raidsonline.com' target='_blank'>RAIDS Online</a><br><a href='http://gisweb.durhamnc.gov/gis_apps/crimedata/dsp_entryform.cfm' target='_blank'>Durham Crime Mapper<a/><br><a href='http://durhamnc.gov/ich/op/DPD/Pages/Home.aspx' target='_blank'>Durham Police Department</a><br><a href='http://dconc.gov/index.aspx?page=475' target='_blank'>Durham County Office of the Sheriff</a><br><a href='http://durhamnc.gov/ich/op/DPD/Pages/CPA.aspx' target='_blank'>Citizens Police Academy</a><br><a href='http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx' target='_blank'>Partners Against Crime</a>",
+        "style": {
+            "units": "/sq. mile",
+            "breaks": [
+                0,
+                35,
+                250
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    },
+    "D_PER_SQMI": {
+        "db": "D_PER_SQMI",
+        "field": "D_PER_SQMI",
+        "category": "safety",
+        "title": "Drug-Related Crimes",
+        "description": "The number of drug-related crimes per square mile that occurred in calendar year 2012.",
+        "importance": "Drug crimes impact individuals, households, neighborhoods and the community as a whole. Drug crimes are often linked with other violent and property crimes, as well as with physical and mental health issues.",
+        "tech_notes": "Drug-related crimes include all incidents involving drug and paraphernalia manufacturing, distributing, and possession charges. For more detailed Durham crime reporting visit RAIDS Online.",
+        "source": "Durham Police Department and Durham County Sheriff's Office (2012)",
+        "links": "<a href='http://raidsonline.com' target='_blank'>RAIDS Online</a><br><a href='http://gisweb.durhamnc.gov/gis_apps/crimedata/dsp_entryform.cfm' target='_blank'>Durham Crime Mapper<a/><br><a href='http://durhamnc.gov/ich/op/DPD/Pages/Home.aspx' target='_blank'>Durham Police Department</a><br><a href='http://dconc.gov/index.aspx?page=475' target='_blank'>Durham County Office of the Sheriff</a><br><a href='http://durhamnc.gov/ich/op/DPD/Pages/CPA.aspx' target='_blank'>Citizens Police Academy</a><br><a href='http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx' target='_blank'>Partners Against Crime</a>",
+        "style": {
+            "units": "/sq. mile",
+            "breaks": [
+                0,
+                5,
+                50
+            ],
+            "colors": [
+                "#D8F2ED",
+                "#2ca79e",
+                "#154F4A"
+            ]
+        }
+    }
+}
