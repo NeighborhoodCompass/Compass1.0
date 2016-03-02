@@ -42,14 +42,14 @@ var CBmeta,
     info,
     terrainURL,
     tonerURL,
-    localURL,
+    pacURL,
     streetURL,
     aerialURL,
     zoningURL,
     fluURL,
     terrainLayer,
     tonerLayer,
-    localLayer,
+    pacLayer,
     streetLayer,
     aerialLayer,
     zoningLayer,
@@ -1230,9 +1230,9 @@ function mapInit() {
         zoom: 10,
         minZoom: 9
     });
-    localURL = 'http://gisweb2.durhamnc.gov/ArcGIS/rest/services/SharedMaps/iMapsCompassBaseMap/MapServer';
+    pacURL = 'http://gisweb2.durhamnc.gov/arcgis/rest/services/DurhamMaps/PACDistricts/MapServer';
     
-    var jqxhr = $.get( localURL, function() {
+    var jqxhr = $.get( pacURL, function() {
 	    terrainURL = 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png';
 	    terrainLayer = L.tileLayer(terrainURL).addTo( map );
 		terrainLayer.on("load", function(e) {
@@ -1320,7 +1320,7 @@ function mapInit() {
 			
 	        this._baseLayerDropDown = L.DomUtil.create('div', 'basemapDropDown', this._baseLayersList);
 	        								  // <select name="nhdropdown" class="nhDropdown" id="neighborhoodDropdown" style="visibility: visible; width: 200px; margin-right: 25px">
-	        this._baseLayerDropDown.innerHTML = '<select id = "basemapSelect" name = "basemapselect" style="width: 100px"><option value = "Terrain">Terrain</option><option value = "Streets">Streets</option><option value = "Aerials">Aerials</option><option value = "Zoning">Zoning</option><option value = "FLU">Future Land Use</option></select>';
+	        this._baseLayerDropDown.innerHTML = '<select id = "basemapSelect" name = "basemapselect" style="width: 100px"><option value = "Terrain">Terrain</option><option value = "Streets">PAC Districts</option><option value = "Aerials">Aerials</option><option value = "Zoning">Zoning</option><option value = "FLU">Future Land Use</option></select>';
 			//TODO - change onmousedown event to something that is touch complient. 
 			this._baseLayerDropDown.firstChild.onmousedown = this._baseLayerDropDown.firstChild.ondblclick = L.DomEvent.stopPropagation;
 			this._baseLayerDropDown.firstChild.ontouchstart = L.DomEvent.stopPropagation;
@@ -1335,19 +1335,19 @@ function mapInit() {
 			    terrainLayer.on("load", function(e) {
 			        terrainLayer.bringToBack();
 			    });
-	    		if(localLayer){map.removeLayer(localLayer);}
+	    		if(pacLayer){map.removeLayer(pacLayer);}
 	    		if(streetLayer){map.removeLayer(streetLayer);}
 	    		if(aerialLayer){map.removeLayer(aerialLayer);}
 	    		if(zoningLayer){map.removeLayer(zoningLayer);}
 	    		if(fluLayer){map.removeLayer(fluLayer);}
 	    	}
 	    	else if(baseLayer == 'Streets'){
-	    		localLayer = localLayer ? map.removeLayer(localLayer) : null;
-			    localLayer = new L.esri.dynamicMapLayer(localURL, {}).addTo(map);
-			    localLayer.on("load", function(e) {
-			        localLayer.bringToBack();
+	    		pacLayer = pacLayer ? map.removeLayer(pacLayer) : null;
+			    pacLayer = new L.esri.dynamicMapLayer(pacURL, {}).addTo(map);
+			    pacLayer.on("load", function(e) {
+			        pacLayer.bringToBack();
 			    });
-	    		map.addLayer(localLayer);
+	    		map.addLayer(pacLayer);
 	    		if(streetLayer){map.removeLayer(streetLayer);}
 	    		if (aerialLayer){map.removeLayer(aerialLayer);}
 	    		if(zoningLayer){map.removeLayer(zoningLayer);}
@@ -1378,7 +1378,7 @@ function mapInit() {
 			        zoningLayer.bringToBack();
 			    });
 	    		map.addLayer(zoningLayer);
-	    		if(localLayer){map.removeLayer(localLayer);}
+	    		if(pacLayer){map.removeLayer(pacLayer);}
 	    		if(aerialLayer){map.removeLayer(aerialLayer);}
 	    		if(streetLayer){map.removeLayer(streetLayer);}
 	    		if(fluLayer){map.removeLayer(fluLayer);}
@@ -1391,7 +1391,7 @@ function mapInit() {
 			        fluLayer.bringToBack();
 			    });
 	    		map.addLayer(fluLayer);
-	    		if(localLayer){map.removeLayer(localLayer);}
+	    		if(pacLayer){map.removeLayer(pacLayer);}
 	    		if(aerialLayer){map.removeLayer(aerialLayer);}
 	    		if(streetLayer){map.removeLayer(streetLayer);}
 	    		if(zoningLayer){map.removeLayer(zoningLayer);}
