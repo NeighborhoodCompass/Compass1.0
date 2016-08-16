@@ -703,7 +703,7 @@
         "importance": "Commercial building permit values reflect active investment in property, whether improvements to or maintenance of existing properties or development of new commercial properties.",
         "tech_notes": "The value of commercial, business, and industrial building permits for each boundary divided by the area (in square miles) of each. These permits include new construction as well as renovations and exclude demolitions.",
         "source": "Durham City/County Inspections Department (2013)",
-        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/ich/cb/ccid/Pages/Home.aspx' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
+        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/293/City-County-Inspections' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb2.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
         "style": {
             "prefix": "$",
             "units": "/sq. mile",
@@ -730,7 +730,7 @@
         "importance": "Certificates of occupancy are issued for completed renovations or new construction. Newly completed residential COs indicate recent investment in real estate and lead to increased property values. Overall, this reflects improvement to a neighborhood's housing stock.",
         "tech_notes": "COs included here are the following types: residential, single family, townhouse, condominium, duplex, manufactured homes, and mixed-use residential. The count of these per neighborhood or blockgroup is divided by the area in square miles within the City/County Inspections districts.",
         "source": "Durham City/County Inspections Department (2012)",
-        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/ich/cb/ccid/Pages/Home.aspx' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
+        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/293/City-County-Inspections' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb2.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
         "style": {
             "units": "/sq. mile",
             "breaks": [
@@ -756,7 +756,7 @@
         "importance": "Certificates of occupancy are issued for completed renovations or new construction. Newly completed residential COs indicate recent investment in real estate and lead to increased property values. Overall, this reflects improvement to a neighborhood's housing stock.",
         "tech_notes": "COs included here are the following types: residential, single family, townhouse, condominium, duplex, manufactured homes, and mixed-use residential. The count of these per neighborhood or blockgroup is divided by the area in square miles within the City/County Inspections districts.",
         "source": "Durham City/County Inspections Department (2013)",
-        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/ich/cb/ccid/Pages/Home.aspx' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
+        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/293/City-County-Inspections' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb2.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
         "style": {
             "units": "/sq. mile",
             "breaks": [
@@ -782,7 +782,7 @@
         "importance": "Certificates of occupancy are issued for completed renovations or new construction. Newly completed commercial COs indicate recent investment in real estate (an economic benefit to a neighborhood) and additional new commercial space, which is both an opportunity for local business growth and potential for improved access to core needs and employment.",
         "tech_notes": "COs included here are the following types: business, mercantile, factory industrial, and mixed use commercial. The count of these per neighborhood or blockgroup is divided by the area in square miles within the City/County Inspections districts.",
         "source": "Durham City/County Inspections Department (2012)",
-        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/ich/cb/ccid/Pages/Home.aspx' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
+        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/293/City-County-Inspections' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb2.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
         "style": {
             "units": "/sq. mile",
             "breaks": [
@@ -808,7 +808,7 @@
         "importance": "Certificates of occupancy are issued for completed renovations or new construction. Newly completed commercial COs indicate recent investment in real estate (an economic benefit to a neighborhood) and additional new commercial space, which is both an opportunity for local business growth and potential for improved access to core needs and employment.",
         "tech_notes": "COs included here are the following types: business, mercantile, factory industrial, and mixed use commercial. The count of these per neighborhood or blockgroup is divided by the area in square miles within the City/County Inspections districts.",
         "source": "Durham City/County Inspections Department (2013)",
-        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/ich/cb/ccid/Pages/Home.aspx' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
+        "links": "<a href='http://durhamnc.gov/446/Office-of-Economic-Workforce-Development' target='_blank'>Durham Office of Economic and Workforce Development</a><br><a href='http://durhamnc.gov/293/City-County-Inspections' target='_blank'>Durham City/County Inspections</a><br><a href='http://gisweb2.durhamnc.gov/durhammaps/developmenttracker/index.html' target='_blank'>Durham Development Tracker<a/>",
         "style": {
             "units": "/sq. mile",
             "breaks": [
